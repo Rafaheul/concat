@@ -1,0 +1,19 @@
+name: Builds
+
+# Builds the installers for every platform from this branch (or from the
+# branch picked by hand) and uploads them as run artifacts, without the
+# tag and draft release that release.yml needs. Desktop bundles come from
+# build-app.yml and the phone apps from mobile.yml.
+on:
+  push:
+    branches: ["rafael/builds"]
+  workflow_dispatch:
+
+jobs:
+  desktop:
+    uses: ./.github/workflows/build-app.yml
+    secrets: inherit
+
+  phones:
+    uses: ./.github/workflows/mobile.yml
+    secrets: inherit
