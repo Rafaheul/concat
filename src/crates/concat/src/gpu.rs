@@ -59,8 +59,22 @@ impl Gpu {
             backends,
             ..wgpu::InstanceDescriptor::new_without_display_handle()
         });
+        // CONCAT_GPU picks the adapter by hand, for a machine whose best one
+        // does not work: `low-power` (the integrated GPU on a laptop with
+        // two) or `software` (WARP / llvmpipe). Anything else, or unset, is
+        // the high-performance one.
+        let choice = std::env::var("CONCAT_GPU").unwrap_or_default();
+        let (power_preference, force_fallback_adapter) = match choice.trim() {
+            "low-power" => (wgpu::PowerPreference::LowPower, false),
+            "software" => (wgpu::PowerPreference::None, true),
+            _ => (wgpu::PowerPreference::HighPerformance, false),
+        };
+        if !choice.is_empty() {
+            log::info!("CONCAT_GPU={choice}");
+        }
         let adapter = pollster::block_on(instance.request_adapter(&wgpu::RequestAdapterOptions {
-            power_preference: wgpu::PowerPreference::HighPerformance,
+            power_preference,
+            force_fallback_adapter,
             ..Default::default()
         }))
         .ok()?;

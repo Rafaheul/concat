@@ -520,6 +520,12 @@ jobs:
         working-directory: src
         run: |
           set -o pipefail
+          # Windows: line tables into a separate .pdb, uploaded beside the
+          # installers, so a crash offset from a user's log can be named.
+          # The .exe itself is unchanged by it: MSVC keeps debug info out of it.
+          if [ "${{ matrix.platform }}" = windows ]; then
+            export CARGO_PROFILE_APP_DEBUG=line-tables-only CARGO_PROFILE_APP_STRIP=none
+          fi
           cargo build --profile app -p concat --target ${{ matrix.target }} 2>&1 | tee build.log
 
       - name: Build log to the summary (failure only)
@@ -1081,3 +1087,13 @@ jobs:
           name: Concat-${{ matrix.platform }}-${{ matrix.arch }}
           path: stage/*
           if-no-files-found: error
+
+      - name: Debug symbols (Windows)
+        if: matrix.platform == 'windows'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: symbols-windows-${{ matrix.arch }}
+          path: |
+            src/target/${{ matrix.target }}/app/concat.pdb
+            src/target/${{ matrix.target }}/app/concat.exe
+          if-no-files-found: warn
