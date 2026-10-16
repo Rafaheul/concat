@@ -1,0 +1,40 @@
+name: Symbolize
+
+# Names the function and line behind a crash offset from a Windows log
+# ("in concat.exe+0x2c28e60"). .github/symbolize.txt holds the Builds run
+# whose symbols-windows-x86_64 artifact matches the crashed build, and one
+# offset per line after it.
+on:
+  push:
+    branches: ["rafael/symbolize"]
+  workflow_dispatch:
+
+jobs:
+  symbolize:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - id: input
+        run: echo "run=$(head -1 .github/symbolize.txt)" >> "$GITHUB_OUTPUT"
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: symbols-windows-x86_64
+          run-id: ${{ steps.input.outputs.run }}
+          github-token: ${{ github.token }}
+          path: sym
+      - name: Symbolize
+        run: |
+          set -euo pipefail
+          sudo apt-get install -y -qq llvm >/dev/null
+          ls -la sym
+          base=$(llvm-objdump -p sym/concat.exe | awk '/^ImageBase/ {print $2}')
+          echo "ImageBase=0x$base"
+          tail -n +2 .github/symbolize.txt | while read -r off; do
+            [ -z "$off" ] && continue
+            addr=$(printf '0x%x' $((0x$base + off)))
+            echo "=== concat.exe+$off ($addr)"
+            llvm-symbolizer --obj=sym/concat.exe --inlining --pretty-print "$addr" || true
+          done
