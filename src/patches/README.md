@@ -24,6 +24,9 @@ changes, all marked `Concat:` in the source:
   desk's ClearType settings (on or off, RGB or BGR), so its text is drawn
   with ClearType as the system's own is. A texture rendered to stays
   greyscale.
+  The order is read with `Canvas::props()`, not `top_props()`: skia-safe's
+  `top_props()` crashes on Windows (a by-value C++ return across the MSVC
+  ABI), which took the app down before its window opened.
 - `itemrenderer.rs`, `create_layer_target`: a layer's surface is created with
   default props, so text in a transparent, cached layer is greyscale
   rather than inheriting the window's subpixel order.
