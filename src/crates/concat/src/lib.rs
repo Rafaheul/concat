@@ -792,6 +792,9 @@ fn start(project: Option<std::path::PathBuf>, smoke: bool) -> Result<(), slint::
     editor.on_library_audition_filter(on_window!(|state, id: SharedString| {
         state.audition_catalogue(id.as_str());
     }));
+    editor.on_library_audition_effect(on_window!(|state, id: SharedString| {
+        state.audition_effect(id.as_str());
+    }));
     editor.on_library_apply_effect(on_window!(|state, id: SharedString| {
         state.apply_catalogue(id.as_str(), true);
     }));

@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "Wähle zuerst einen Video- oder Bildclip auf der Zeitleiste",
   "studio.selectVideoImageText": "Wähle zuerst einen Video-, Bild- oder Textclip auf der Zeitleiste",
   "studio.settings": "Einstellungen…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "Showing the look over the picture. Double-click the card, or its plus, to lay it on the timeline",
   "studio.smartBrush": "Smart-Pinsel: {0}",
   "studio.splitAtPlayhead": "Am Abspielkopf teilen",

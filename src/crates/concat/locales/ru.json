@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "Сначала выберите видео или изображение на таймлайне",
   "studio.selectVideoImageText": "Сначала выберите видео, изображение или текстовый клип на таймлайне",
   "studio.settings": "Настройки…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "Стиль показан поверх картинки. Двойной щелчок по карточке или её плюсу кладёт его на таймлайн",
   "studio.smartBrush": "Умная кисть: {0}",
   "studio.splitAtPlayhead": "Разрезать по курсору",

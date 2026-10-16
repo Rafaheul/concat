@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "Спершу виберіть на часовій шкалі кліп із відео чи зображенням",
   "studio.selectVideoImageText": "Спершу виберіть на часовій шкалі кліп із відео, зображенням чи текстом",
   "studio.settings": "Налаштування…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "Стиль показано поверх зображення. Двічі клацніть картку або її плюс, щоб покласти стиль на часову шкалу",
   "studio.smartBrush": "Розумний пензель: {0}",
   "studio.splitAtPlayhead": "Розрізати на курсорі",

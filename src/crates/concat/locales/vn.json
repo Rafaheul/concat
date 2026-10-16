@@ -933,6 +933,7 @@
   "studio.selectVideoImageClip": "Trước tiên, hãy chọn clip video hoặc hình ảnh trên dòng thời gian",
   "studio.selectVideoImageText": "Trước tiên, hãy chọn clip video, hình ảnh hoặc văn bản trên dòng thời gian",
   "studio.settings": "Cài đặt…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "Đang áp dụng kiểu màu lên hình ảnh. Nhấp đúp vào thẻ hoặc dấu cộng để đặt lên dòng thời gian",
   "studio.smartBrush": "Cọ thông minh: {0}",
   "studio.splitAtPlayhead": "Tách tại đầu phát",

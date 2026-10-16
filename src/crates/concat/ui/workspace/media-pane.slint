@@ -1738,6 +1738,9 @@ export component MediaPane inherits Rectangle {
     /// Filters page: a single click shows the look over the whole picture
     /// without laying it down; `audition` is the id being shown, or empty.
     callback audition-filter(filter-id: string);
+    /// Effects page: a single click shows the effect on the selected clip
+    /// without applying it; `audition` is the id being shown, or empty.
+    callback audition-effect(effect-id: string);
     in property <string> audition;
     /// Audio page: add a voice or room to the selected clip's sound.
     callback apply-audio(effect-id: string);
@@ -2439,9 +2442,12 @@ export component MediaPane inherits Rectangle {
                         glyph: root.audio-shelf ? Glyph.waveform : Glyph.sparkle;
                         // A sound has no picture: its cards are the compact kind.
                         compact: root.audio-shelf;
-                        // Effects apply directly on single-click to the selected clip —
-                        // auditions:false means click = apply, no monitor overlay confusion.
-                        auditions: false;
+                        // A click shows the effect on the selected clip in
+                        // the monitor; a double-click or the plus applies it.
+                        // A sound has nothing to show, so it applies at once.
+                        auditions: !root.audio-shelf;
+                        auditioning: root.audition;
+                        auditioned(id) => { root.audition-effect(id); }
                         applied(id, label) => {
                             if (root.audio-shelf) {
                                 root.apply-audio(id);

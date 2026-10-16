@@ -1110,6 +1110,9 @@ export component Lanes inherits Rectangle {
     callback clip-pressed(id: string, additive: bool, edge: int);
     /// The split tool pressed a clip: cut it at `seconds` on the timeline.
     callback clip-split(id: string, seconds: float);
+    /// The scissors on the playhead: cut at the playhead - the selected
+    /// clips under it, or every clip under it when nothing is selected.
+    callback split-at-playhead();
     /// A clip's volume line dragged to `gain`.
     callback clip-volume(id: string, gain: float);
     callback clip-dragged(seconds: float, pixels: length);
@@ -1822,6 +1825,31 @@ export component Lanes inherits Rectangle {
                     fit: fill;
                     fill: Theme.playhead;
                     commands: "M 0 0 L 1 0 L 0.5 1 Z";
+                }
+            }
+
+            // Scissors riding the playhead in the ruler: move the line, cut
+            // right there, without reaching for the tray.
+            if !root.finger: scissors := Rectangle {
+                x: 4px;
+                y: (root.ruler-height - self.height) / 2;
+                width: 18px;
+                height: 18px;
+                border-radius: 4px;
+                background: cut.has-hover ? Theme.playhead : Theme.playhead.with-alpha(0.85);
+
+                Icon {
+                    x: (parent.width - self.width) / 2;
+                    y: (parent.height - self.height) / 2;
+                    glyph: Glyph.split;
+                    size: 12px;
+                    tint: Theme.well;
+                    weight: 2.4;
+                }
+
+                cut := TouchArea {
+                    mouse-cursor: pointer;
+                    clicked => { root.split-at-playhead(); }
                 }
             }
         }

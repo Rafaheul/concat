@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "Seleziona prima una clip video o immagine sulla timeline",
   "studio.selectVideoImageText": "Seleziona prima una clip video, immagine o testo sulla timeline",
   "studio.settings": "Impostazioni…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "Showing the look over the picture. Double-click the card, or its plus, to lay it on the timeline",
   "studio.smartBrush": "Pennello intelligente: {0}",
   "studio.splitAtPlayhead": "Dividi alla testina",

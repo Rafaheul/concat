@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "पहले टाइमलाइन पर कोई वीडियो या इमेज क्लिप चुनें",
   "studio.selectVideoImageText": "पहले टाइमलाइन पर कोई वीडियो, इमेज या टेक्स्ट क्लिप चुनें",
   "studio.settings": "सेटिंग…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "तस्वीर पर लुक दिखाया जा रहा है। इसे टाइमलाइन पर रखने के लिए कार्ड या उसके प्लस पर डबल-क्लिक करें",
   "studio.smartBrush": "स्मार्ट ब्रश: {0}",
   "studio.splitAtPlayhead": "प्लेहेड पर विभाजित करें",

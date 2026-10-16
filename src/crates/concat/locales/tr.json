@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "Önce zaman çizelgesinde bir video veya görüntü klibi seçin",
   "studio.selectVideoImageText": "Önce zaman çizelgesinde bir video, görüntü veya metin klibi seçin",
   "studio.settings": "Ayarlar…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "Showing the look over the picture. Double-click the card, or its plus, to lay it on the timeline",
   "studio.smartBrush": "Akıllı fırça: {0}",
   "studio.splitAtPlayhead": "Oynatma imlecinde böl",

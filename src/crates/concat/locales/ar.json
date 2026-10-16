@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "حدّد مقطع فيديو أو صورة على المخطط الزمني أولًا",
   "studio.selectVideoImageText": "حدّد مقطع فيديو أو صورة أو نص على المخطط الزمني أولًا",
   "studio.settings": "الإعدادات…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "يُعرض النمط فوق الصورة. انقر نقرًا مزدوجًا على البطاقة، أو علامة الجمع فيها، لوضعه على المخطط الزمني",
   "studio.smartBrush": "الفرشاة الذكية: {0}",
   "studio.splitAtPlayhead": "تقسيم عند مؤشر التشغيل",

@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "আগে টাইমলাইনে একটি ভিডিও বা ছবির ক্লিপ নির্বাচন করুন",
   "studio.selectVideoImageText": "আগে টাইমলাইনে একটি ভিডিও, ছবি বা টেক্সট ক্লিপ নির্বাচন করুন",
   "studio.settings": "সেটিংস…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "ছবির উপর লুক দেখানো হচ্ছে। টাইমলাইনে বসাতে কার্ডে, অথবা তার প্লাসে, ডাবল-ক্লিক করুন",
   "studio.smartBrush": "স্মার্ট ব্রাশ: {0}",
   "studio.splitAtPlayhead": "প্লেহেডে বিভক্ত করুন",

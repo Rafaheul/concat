@@ -831,6 +831,11 @@ pub struct Studio {
     /// card is double-clicked or its plus pressed, which lays a filter
     /// layer at the playhead.
     audition: Option<String>,
+    /// The audition is an effect from the Effects page rather than a look:
+    /// it goes on the selected clip's chain, the way applying it would,
+    /// and only falls back to a layer over everything when no picture clip
+    /// is selected.
+    audition_on_clip: bool,
     /// Counts every change to the document. What the flattened clip list
     /// below is keyed on, so a frame of an unchanged document reuses it.
     revision: u64,
@@ -2173,6 +2178,7 @@ impl Studio {
             inspector_jump: (0, "", ""),
             media_jump: 0,
             audition: None,
+            audition_on_clip: false,
             revision: 0,
             flat: None,
             commit_pending: false,
@@ -2772,7 +2778,26 @@ impl Studio {
         // The look being shown before it is laid down goes into this
         // frame only, as the layer it would be: over every track, the
         // whole way along, at full strength. The timeline is as it was.
-        if let Some(filter_id) = self.audition.clone() {
+        // An effect being shown goes on the selected clip, as it would be
+        // applied; with no picture clip selected it is a layer like a look.
+        let mut audition = self.audition.clone();
+        if self.audition_on_clip
+            && let Some(effect_id) = audition.clone()
+            && let Some(target) = self.sole_selection().and_then(|id| self.clip(&id).cloned())
+            && target.kind.is_visual()
+            && let Some(media) = self.project().media_by_id(&target.media_id)
+        {
+            let (path, start) = (media.path.clone(), target.start);
+            if let Some(flat) = own
+                .get_or_insert_with(|| (*clips).clone())
+                .iter_mut()
+                .find(|flat| flat.path == path && (flat.start - start).abs() < 1e-6)
+            {
+                flat.effects.push(AppliedFilter::new(effect_id));
+                audition = None;
+            }
+        }
+        if let Some(filter_id) = audition {
             let effects = vec![AppliedFilter::new(filter_id)];
             let track = clips
                 .iter()
@@ -3669,6 +3694,23 @@ impl Studio {
             self.notify(&t("studio.showingLookOverPicture"), false);
         }
         self.audition = (!same).then(|| id.to_owned());
+        self.audition_on_clip = false;
+        self.request_preview();
+    }
+
+    /// Shows an effect on the selected clip without applying it: what a
+    /// single click on an Effects card does. The same card clicked again
+    /// takes it off; a double-click or the card's plus applies it.
+    pub fn audition_effect(&mut self, id: &str) {
+        if self.session.is_none() {
+            return;
+        }
+        let same = self.audition.as_deref() == Some(id) && self.audition_on_clip;
+        if !same && !self.audition_on_clip {
+            self.notify(&t("studio.showingEffectOnClip"), false);
+        }
+        self.audition = (!same).then(|| id.to_owned());
+        self.audition_on_clip = !same;
         self.request_preview();
     }
 
@@ -3699,6 +3741,11 @@ impl Studio {
         if !video && clip.kind == model::ClipKind::Image {
             self.notify("A still has no sound to filter", true);
             return;
+        }
+        // The effect being shown is now the clip's own.
+        if video && self.audition_on_clip {
+            self.audition = None;
+            self.audition_on_clip = false;
         }
         let entry = AppliedFilter::new(id);
         let patch = if video {

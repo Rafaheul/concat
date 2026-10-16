@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "Najpierw zaznacz na osi czasu klip wideo lub obraz",
   "studio.selectVideoImageText": "Najpierw zaznacz na osi czasu klip wideo, obraz lub tekst",
   "studio.settings": "Ustawienia…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "Styl jest pokazany na obrazie. Kliknij dwukrotnie kartę lub jej plus, aby położyć go na osi czasu",
   "studio.smartBrush": "Inteligentny pędzel: {0}",
   "studio.splitAtPlayhead": "Podziel na głowicy",

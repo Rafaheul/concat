@@ -122,6 +122,10 @@ export global Editor {
     /// it down, which is what a single click on a card does. The same id
     /// again takes it off.
     callback library-audition-filter(filter-id: string);
+    /// Effects page: show the effect on the selected clip without
+    /// applying it, which is what a single click on a card does. The same
+    /// id again takes it off; `library-audition` names it while it shows.
+    callback library-audition-effect(effect-id: string);
     /// The look being shown that way, by id, or empty: its card draws
     /// itself picked while it is.
     in-out property <string> library-audition;

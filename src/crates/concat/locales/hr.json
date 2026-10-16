@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "Prvo odaberite video ili slikovni klip na vremenskoj liniji",
   "studio.selectVideoImageText": "Prvo odaberite video, slikovni ili tekstualni klip na vremenskoj liniji",
   "studio.settings": "Postavke…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "Prikaz izgleda preko slike. Dvoklik na karticu ili njezin plus postavlja je na vremensku liniju",
   "studio.smartBrush": "Pametna četka: {0}",
   "studio.splitAtPlayhead": "Podijeli na playheadu",

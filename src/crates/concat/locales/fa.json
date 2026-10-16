@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "ابتدا یک ویدئو یا تصویر کلیپ را روی تایم‌لاین انتخاب کنید",
   "studio.selectVideoImageText": "ابتدا یک کلیپ ویدئو، تصویر یا متن را روی تایم‌لاین انتخاب کنید",
   "studio.settings": "تنظیمات…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "ظاهر روی تصویر پیش‌نمایش می‌شود. روی کارت یا علامت + آن دوبار کلیک کنید تا روی تایم‌لاین قرار بگیرد",
   "studio.smartBrush": "قلم‌موی هوشمند: {0}",
   "studio.splitAtPlayhead": "تقسیم در نشانگر پخش",

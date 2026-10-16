@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "Selecione primeiro um clipe de vídeo ou imagem na linha do tempo",
   "studio.selectVideoImageText": "Selecione primeiro um clipe de vídeo, imagem ou texto na linha do tempo",
   "studio.settings": "Configurações…",
+  "studio.showingEffectOnClip": "Mostrando o efeito no clipe selecionado. Clique duas vezes no cartão, ou no +, para aplicar",
   "studio.showingLookOverPicture": "Showing the look over the picture. Double-click the card, or its plus, to lay it on the timeline",
   "studio.smartBrush": "Pincel inteligente: {0}",
   "studio.splitAtPlayhead": "Dividir no cursor",

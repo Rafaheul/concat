@@ -944,6 +944,7 @@
   "studio.selectVideoImageClip": "请先在时间线上选择一个视频或图片片段",
   "studio.selectVideoImageText": "请先在时间线上选择一个视频、图片或文本片段",
   "studio.settings": "设置…",
+  "studio.showingEffectOnClip": "Showing the effect on the selected clip. Double-click the card, or its plus, to apply it",
   "studio.showingLookOverPicture": "正在画面上预览该风格。双击卡片或其加号，即可将其放到时间线上",
   "studio.smartBrush": "智能画笔：{0}",
   "studio.splitAtPlayhead": "在播放头处分割",
